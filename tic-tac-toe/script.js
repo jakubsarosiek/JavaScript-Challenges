@@ -146,8 +146,6 @@ function switchPlayer() {
   winnerDiv.textContent = `now player ${player} move`.toUpperCase();
 }
 function resetGame() {
-  let arr = [[], [], []];
-  let row = [];
   for (let i = 0; i < gridSize; i++) {
     for (let j = 0; j < gridSize; j++) {
       document.querySelector(`[data-x="${i}"][data-y="${j}"]`).textContent = "";
@@ -161,21 +159,16 @@ function resetGame() {
 const playGame = (targetItem) => {
   if (targetItem.target.textContent === "") {
     targetItem.target.textContent = player;
-  }
-
-  if (checkWinner()) {
-    winnerPlayer = player;
-    winnerDiv.textContent = `Player ${winnerPlayer} WINS!!!`.toUpperCase();
-    //console.log(`Player ${winnerPlayer} WINS!!! :)`);
-    grid.removeEventListener("click", playGame);
-    // resetGame();
-  } else if (checkRemis()) {
-    //console.log(`It's REMIS!!!`);
-    winnerDiv.textContent = `It's REMIS!!!`.toUpperCase();
-    grid.removeEventListener("click", playGame);
-    //resetGame();
-  } else {
-    switchPlayer();
+    if (checkWinner()) {
+      winnerPlayer = player;
+      winnerDiv.textContent = `Player ${winnerPlayer} WINS!!!`.toUpperCase();
+      grid.removeEventListener("click", playGame);
+    } else if (checkRemis()) {
+      winnerDiv.textContent = `It's REMIS!!!`.toUpperCase();
+      grid.removeEventListener("click", playGame);
+    } else {
+      switchPlayer();
+    }
   }
 };
 
