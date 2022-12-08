@@ -7,3 +7,4 @@
 All the challenges are listed below:
 
 - [Tic Tac Toe](https://jakubsarosiek.github.io/JavaScript-Challenges/tic-tac-toe/)
+- [Spot a Color](https://jakubsarosiek.github.io/JavaScript-Challenges/spot-a-color/)
